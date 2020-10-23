@@ -1,0 +1,6 @@
+framework module Pods_Lamoti {
+  umbrella header "Pods-Lamoti-umbrella.h"
+
+  export *
+  module * { export * }
+}
