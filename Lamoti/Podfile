@@ -11,5 +11,8 @@ target 'Lamoti' do
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
   
+  # UI
+  pod 'TextFieldEffects'
+  
 
 end
