@@ -34,13 +34,7 @@ class ViewController: UIViewController {
             print("Error: \(error?.localizedDescription ?? "No error available.")")
           }
             
-            let message = self.remoteConfig["sever_message"].stringValue
-            let alert = UIAlertController(title: "공지사항", message: message, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: { (action) in
-                exit(0)
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
+            successRemote()
         }
         
         logo.image = UIImage(named: "app_logo")
@@ -49,6 +43,24 @@ class ViewController: UIViewController {
         logo.snp.makeConstraints { (make) in
         make.center.equalTo(self.view)
             
+        }
+    }
+    
+    func successRemote() {
+        let message = self.remoteConfig["sever_message"].stringValue
+        let messageCheck = self.remoteConfig["server_message_check"].boolValue
+        
+        if(messageCheck) {
+        let alert = UIAlertController(title: "공지사항", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "확인", style: UIAlertAction.Style.default, handler: { (action) in
+            exit(0)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+        } else {
+            let loginVC = self.storyboard?.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+            
+            self.present(loginVC, animated: false, completion: nil)
         }
     }
 }

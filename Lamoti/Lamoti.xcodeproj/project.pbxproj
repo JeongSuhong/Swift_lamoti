@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		822EF33C2542CBF600756B40 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 822EF33B2542CBF600756B40 /* GoogleService-Info.plist */; };
+		82634D43254AAB66006050CF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82634D42254AAB66006050CF /* LoginViewController.swift */; };
 		827229F1254035E000FFF688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827229F0254035E000FFF688 /* AppDelegate.swift */; };
 		827229F3254035E000FFF688 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827229F2254035E000FFF688 /* SceneDelegate.swift */; };
 		827229F5254035E000FFF688 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827229F4254035E000FFF688 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		822EF33B2542CBF600756B40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		82634D42254AAB66006050CF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		827229ED254035E000FFF688 /* Lamoti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lamoti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		827229F0254035E000FFF688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		827229F2254035E000FFF688 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		82634D41254AAB4B006050CF /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				82634D42254AAB66006050CF /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		827229E4254035DF00FFF688 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +86,7 @@
 		827229EF254035E000FFF688 /* Lamoti */ = {
 			isa = PBXGroup;
 			children = (
+				82634D41254AAB4B006050CF /* ViewControllers */,
 				827229F0254035E000FFF688 /* AppDelegate.swift */,
 				827229F2254035E000FFF688 /* SceneDelegate.swift */,
 				827229F4254035E000FFF688 /* ViewController.swift */,
@@ -213,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82634D43254AAB66006050CF /* LoginViewController.swift in Sources */,
 				827229F5254035E000FFF688 /* ViewController.swift in Sources */,
 				827229F1254035E000FFF688 /* AppDelegate.swift in Sources */,
 				827229F3254035E000FFF688 /* SceneDelegate.swift in Sources */,
