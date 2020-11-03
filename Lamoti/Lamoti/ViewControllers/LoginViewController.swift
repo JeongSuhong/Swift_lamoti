@@ -6,24 +6,25 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var singInButton: UIButton!
+    
+    let remoteConfig = RemoteConfig.remoteConfig()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let statusBar = UIView()
+        self.view.addSubview(statusBar)
+        statusBar.snp.makeConstraints { (m) in
+            m.top.left.right.equalTo(self.view)
+            m.height.equalTo(20)
+        }
+        statusBar.backgroundColor = UIColor.gray
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

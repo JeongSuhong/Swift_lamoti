@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-65" y="52"/>
+            <point key="canvasLocation" x="42" y="52"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="xew-zD-AHj">
@@ -31,7 +31,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dBL-em-H27">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="dBL-em-H27">
                                 <rect key="frame" x="157" y="194" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dBL-em-H27" secondAttribute="height" multiplier="1:1" id="ak5-jG-KYJ"/>
@@ -110,6 +110,10 @@
                             <constraint firstItem="14j-he-oiQ" firstAttribute="top" secondItem="i0B-UP-Dai" secondAttribute="bottom" constant="8" symbolic="YES" id="yRM-Uj-8Er"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="lM2-di-cbo" id="S39-YE-SgO"/>
+                        <outlet property="singInButton" destination="nvM-3f-UJQ" id="We9-PH-Kvi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8I4-TN-wAT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,6 +129,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="app_logo" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
