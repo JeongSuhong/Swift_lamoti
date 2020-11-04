@@ -11,7 +11,6 @@ import Firebase
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var singInButton: UIButton!
     
     let remoteConfig = RemoteConfig.remoteConfig()
     
@@ -25,6 +24,12 @@ class LoginViewController: UIViewController {
             m.height.equalTo(20)
         }
         statusBar.backgroundColor = UIColor.gray
+        
     }
     
+    @IBAction func presentSignIn(_ sender: UIButton) {
+        let view = self.storyboard?.instantiateViewController(identifier: "SignInViewController") as! SignInViewController
+        view.modalPresentationStyle = .fullScreen
+        self.present(view, animated: true, completion: nil)
+    }
 }

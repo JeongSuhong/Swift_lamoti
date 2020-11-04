@@ -16,6 +16,7 @@
 		827229FA254035E100FFF688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 827229F9254035E100FFF688 /* Assets.xcassets */; };
 		827229FD254035E100FFF688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827229FB254035E100FFF688 /* LaunchScreen.storyboard */; };
 		8278B9CE25483B54004BD0A5 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */; };
+		829B6409255184EB00B4FE34 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B6408255184EB00B4FE34 /* SignInViewController.swift */; };
 		DF6534CFACBA019E644CAAA8 /* Pods_Lamoti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4540D17EFED53C76EC1C236 /* Pods_Lamoti.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		827229FC254035E100FFF688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		827229FE254035E100FFF688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		829B6408255184EB00B4FE34 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9DF049DE4EE1858A73357112 /* Pods-Lamoti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lamoti.debug.xcconfig"; path = "Target Support Files/Pods-Lamoti/Pods-Lamoti.debug.xcconfig"; sourceTree = "<group>"; };
 		D50F03894914AB6E33859BC2 /* Pods-Lamoti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lamoti.release.xcconfig"; path = "Target Support Files/Pods-Lamoti/Pods-Lamoti.release.xcconfig"; sourceTree = "<group>"; };
 		F4540D17EFED53C76EC1C236 /* Pods_Lamoti.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lamoti.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				82634D42254AAB66006050CF /* LoginViewController.swift */,
+				829B6408255184EB00B4FE34 /* SignInViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				82634D43254AAB66006050CF /* LoginViewController.swift in Sources */,
 				827229F5254035E000FFF688 /* ViewController.swift in Sources */,
 				827229F1254035E000FFF688 /* AppDelegate.swift in Sources */,
+				829B6409255184EB00B4FE34 /* SignInViewController.swift in Sources */,
 				827229F3254035E000FFF688 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

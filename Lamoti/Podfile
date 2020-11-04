@@ -8,8 +8,11 @@ target 'Lamoti' do
   # Pods for Lamoti
 
   pod 'SnapKit', '~> 5.0.0'
+  
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
   
   # UI
   pod 'TextFieldEffects'
