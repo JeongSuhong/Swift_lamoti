@@ -54,20 +54,27 @@ class SignInViewController: UIViewController, UINavigationControllerDelegate, UI
         Auth.auth().createUser(withEmail: emailText.text!, password: passwordText.text!) { (result, error) in
             let userId = result?.user.uid
 
-            Database.database().reference().child("users/\(userId!)/username").setValue(self.nameText.text)
+         //   Database.database().reference().child("users/\(userId!)/username").setValue(self.nameText.text)
             
             let image = self.profileImage.image!.jpegData(compressionQuality: 0.1)
-            let riverRef = Storage.storage().reference().child("userImage/\(userId!)")
+            let riversRef = Storage.storage().reference().child("userImage/\(userId!).jpg")
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
-            let uploadTask = riverRef.putData(image!, metadata: metadata) { (metadata, error) in
-                guard let metadata = metadata else { return }
+            let uploadTask = riversRef.putData(image!, metadata: metadata) { (metadata, error) in
+                guard let metadata = metadata else {
+                    print(error)
+                    return
+                    
+                }
+        
+                riversRef.downloadURL { (url, error) in
+                  guard let downloadURL = url else {
+                    print(error)
+                    return
+                  }
+                    Database.database().reference().child("users").child(userId!).setValue(NSDictionary(dictionary:["name":self.nameText.text, "profileImageUrl":downloadURL.absoluteString]))
+            //        Database.database().reference().child("users/\(userId!)/profileImageUrl").setValue(downloadURL.absoluteString)
             }
-            
-            // URL 저장이 안됨.
-            riverRef.downloadURL{ (url, error) in
-                guard let downloadURL = url else { return }
-                Database.database().reference().child("users/\(userId!)/profileImageUrl").setValue(downloadURL)
             }
         }
     }
