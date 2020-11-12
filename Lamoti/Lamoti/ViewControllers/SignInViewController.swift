@@ -54,8 +54,6 @@ class SignInViewController: UIViewController, UINavigationControllerDelegate, UI
         Auth.auth().createUser(withEmail: emailText.text!, password: passwordText.text!) { (result, error) in
             let userId = result?.user.uid
 
-         //   Database.database().reference().child("users/\(userId!)/username").setValue(self.nameText.text)
-            
             let image = self.profileImage.image!.jpegData(compressionQuality: 0.1)
             let riversRef = Storage.storage().reference().child("userImage/\(userId!).jpg")
             let metadata = StorageMetadata()
@@ -73,7 +71,6 @@ class SignInViewController: UIViewController, UINavigationControllerDelegate, UI
                     return
                   }
                     Database.database().reference().child("users").child(userId!).setValue(NSDictionary(dictionary:["name":self.nameText.text, "profileImageUrl":downloadURL.absoluteString]))
-            //        Database.database().reference().child("users/\(userId!)/profileImageUrl").setValue(downloadURL.absoluteString)
             }
             }
         }
