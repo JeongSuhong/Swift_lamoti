@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		821014CE255D12A4009A7346 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821014CD255D12A4009A7346 /* MainViewController.swift */; };
+		821014D1255D197B009A7346 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821014D0255D197B009A7346 /* MainTabBarController.swift */; };
 		822EF33C2542CBF600756B40 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 822EF33B2542CBF600756B40 /* GoogleService-Info.plist */; };
 		82634D43254AAB66006050CF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82634D42254AAB66006050CF /* LoginViewController.swift */; };
 		827229F1254035E000FFF688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827229F0254035E000FFF688 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		821014CD255D12A4009A7346 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		821014D0255D197B009A7346 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		822EF33B2542CBF600756B40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82634D42254AAB66006050CF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		827229ED254035E000FFF688 /* Lamoti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lamoti.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,7 @@
 				82634D42254AAB66006050CF /* LoginViewController.swift */,
 				829B6408255184EB00B4FE34 /* SignInViewController.swift */,
 				821014CD255D12A4009A7346 /* MainViewController.swift */,
+				821014D0255D197B009A7346 /* MainTabBarController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				82634D43254AAB66006050CF /* LoginViewController.swift in Sources */,
 				827229F5254035E000FFF688 /* ViewController.swift in Sources */,
 				827229F1254035E000FFF688 /* AppDelegate.swift in Sources */,
+				821014D1255D197B009A7346 /* MainTabBarController.swift in Sources */,
 				821014CE255D12A4009A7346 /* MainViewController.swift in Sources */,
 				829B6409255184EB00B4FE34 /* SignInViewController.swift in Sources */,
 				827229F3254035E000FFF688 /* SceneDelegate.swift in Sources */,
