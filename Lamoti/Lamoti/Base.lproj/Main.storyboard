@@ -255,7 +255,7 @@
         <!--Peple-->
         <scene sceneID="GyL-uO-RVS">
             <objects>
-                <viewController storyboardIdentifier="MainViewContoller" id="VDd-CP-Vaw" customClass="MainViewController" customModule="Lamoti" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PeopleViewController" id="VDd-CP-Vaw" customClass="PeopleViewController" customModule="Lamoti" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZDu-TV-QBK" customClass="MainView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

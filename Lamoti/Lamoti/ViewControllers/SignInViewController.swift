@@ -71,6 +71,8 @@ class SignInViewController: UIViewController, UINavigationControllerDelegate, UI
                     return
                   }
                     Database.database().reference().child("users").child(userId!).setValue(NSDictionary(dictionary:["name":self.nameText.text, "profileImageUrl":downloadURL.absoluteString]))
+                    
+                    self.dismiss(animated: true, completion: nil)
             }
             }
         }
