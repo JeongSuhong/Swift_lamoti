@@ -12,4 +12,5 @@ class UserModel : NSObject {
     
     var name : String?
     var profileImageUrl : String?
+    var uid : String?
 }

@@ -70,16 +70,23 @@ class SignInViewController: UIViewController, UINavigationControllerDelegate, UI
                     print(error)
                     return
                   }
-                    Database.database().reference().child("users").child(userId!).setValue(NSDictionary(dictionary:["name":self.nameText.text, "profileImageUrl":downloadURL.absoluteString]))
-                    
-                    self.dismiss(animated: true, completion: nil)
+                    let userData = NSDictionary(dictionary:["name":self.nameText.text, "profileImageUrl":downloadURL.absoluteString, "uid":Auth.auth().currentUser?.uid])
+                    Database.database().reference().child("users").child(userId!).setValue(userData) { (error, reference) in
+                        if error == nil {
+                            self.closeVC()
+                        }
+                    }
             }
             }
         }
     }
     
-    @IBAction func cancelSignIn(_ sender: Any) {
+    func closeVC() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelSignIn(_ sender: Any) {
+        closeVC()
     }
 }
 
