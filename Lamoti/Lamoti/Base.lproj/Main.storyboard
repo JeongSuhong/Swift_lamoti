@@ -288,7 +288,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BUQ-To-zKh">
-                                <rect key="frame" x="20" y="832" width="289" height="30"/>
+                                <rect key="frame" x="20" y="827" width="289" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="289" id="cLm-j5-8uS"/>
                                     <constraint firstAttribute="height" constant="30" id="mE3-Dq-icY"/>
@@ -302,11 +302,12 @@
                         <constraints>
                             <constraint firstItem="App-MA-fA3" firstAttribute="bottom" secondItem="WJQ-DA-8ZS" secondAttribute="bottom" id="9Nu-Cs-TUc"/>
                             <constraint firstItem="BUQ-To-zKh" firstAttribute="leading" secondItem="WJQ-DA-8ZS" secondAttribute="leading" constant="20" id="HTu-h9-Lka"/>
-                            <constraint firstItem="BUQ-To-zKh" firstAttribute="bottom" secondItem="WJQ-DA-8ZS" secondAttribute="bottom" id="PLq-y5-5yl"/>
+                            <constraint firstItem="BUQ-To-zKh" firstAttribute="bottom" secondItem="WJQ-DA-8ZS" secondAttribute="bottom" constant="-5" id="PLq-y5-5yl"/>
                             <constraint firstItem="WJQ-DA-8ZS" firstAttribute="trailing" secondItem="App-MA-fA3" secondAttribute="trailing" constant="20" id="xEh-hP-25x"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="messageText" destination="BUQ-To-zKh" id="Yf2-9B-R0I"/>
                         <outlet property="sendButton" destination="App-MA-fA3" id="WdM-2E-c86"/>
                     </connections>
                 </viewController>

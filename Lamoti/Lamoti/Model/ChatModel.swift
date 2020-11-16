@@ -9,6 +9,11 @@ import Foundation
 
 class ChatModel : NSObject {
     
-    var uid : String?
-    var destinationUid : String?
+    public var users : Dictionary<String,Bool> = [:]
+    public var comments : Dictionary<String,Comment> = [:]
+    
+    public class Comment {
+        public var uid : String?
+        public var destinationUid : String?
+    }
 }
