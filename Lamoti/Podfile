@@ -13,7 +13,9 @@ target 'Lamoti' do
   # UI
   pod 'TextFieldEffects'
   
-
+  # Object <-> JSON
+  pod 'ObjectMapper'
+  
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Database'
