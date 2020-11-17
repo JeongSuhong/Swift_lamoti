@@ -296,24 +296,47 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Om3-av-rH2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="775"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="70" id="2UN-63-yxL">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2UN-63-yxL" id="yBt-ne-QZw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="sLa-pR-8jY" id="kr8-4R-giX"/>
+                                    <outlet property="delegate" destination="sLa-pR-8jY" id="jaD-ZZ-338"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WJQ-DA-8ZS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Om3-av-rH2" firstAttribute="leading" secondItem="WJQ-DA-8ZS" secondAttribute="leading" id="2cC-sT-28w"/>
+                            <constraint firstItem="Om3-av-rH2" firstAttribute="top" secondItem="WJQ-DA-8ZS" secondAttribute="top" id="3Tw-sQ-Que"/>
                             <constraint firstItem="App-MA-fA3" firstAttribute="bottom" secondItem="WJQ-DA-8ZS" secondAttribute="bottom" id="9Nu-Cs-TUc"/>
                             <constraint firstItem="BUQ-To-zKh" firstAttribute="leading" secondItem="WJQ-DA-8ZS" secondAttribute="leading" constant="20" id="HTu-h9-Lka"/>
+                            <constraint firstItem="Om3-av-rH2" firstAttribute="trailing" secondItem="WJQ-DA-8ZS" secondAttribute="trailing" id="OMt-Py-Afi"/>
                             <constraint firstItem="BUQ-To-zKh" firstAttribute="bottom" secondItem="WJQ-DA-8ZS" secondAttribute="bottom" constant="-5" id="PLq-y5-5yl"/>
                             <constraint firstItem="WJQ-DA-8ZS" firstAttribute="trailing" secondItem="App-MA-fA3" secondAttribute="trailing" constant="20" id="xEh-hP-25x"/>
+                            <constraint firstItem="BUQ-To-zKh" firstAttribute="top" secondItem="Om3-av-rH2" secondAttribute="bottom" constant="8" symbolic="YES" id="xrP-vW-p0v"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="messageText" destination="BUQ-To-zKh" id="Yf2-9B-R0I"/>
                         <outlet property="sendButton" destination="App-MA-fA3" id="WdM-2E-c86"/>
+                        <outlet property="tableView" destination="Om3-av-rH2" id="B3C-8J-xzy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHz-y9-OPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4743" y="52"/>
+            <point key="canvasLocation" x="4742.0289855072469" y="51.5625"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="WCl-Cs-1ny">
