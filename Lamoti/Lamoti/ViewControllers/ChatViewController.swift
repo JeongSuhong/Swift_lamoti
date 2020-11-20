@@ -14,6 +14,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     var uid : String?
     var chatRoomUid : String?
     var comments : [ChatModel.Comment] = []
+    var userModel : UserModel?
     
     @IBOutlet weak var messageText: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -34,10 +35,32 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let view = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-        view.textLabel?.text = self.comments[indexPath.row].message
-         
+        
+        if (self.comments[indexPath.row].uid == uid) {
+        let view = tableView.dequeueReusableCell(withIdentifier: "MyMessageCell", for: indexPath) as! MyMessageCell
+            view.messageText?.text = self.comments[indexPath.row].message
+            view.messageText.numberOfLines = 0
+            return view
+        } else {
+            let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
+            view.nameText.text = userModel?.name
+            view.messageText.text = self.comments[indexPath.row].message
+            view.messageText.numberOfLines = 0
+            
+            let url = URL(string: (self.userModel?.profileImageUrl)!)
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                DispatchQueue.main.async {
+                    view.profileImage.image = UIImage(data: data!)
+                    view.profileImage.layer.cornerRadius = view.profileImage.frame.width / 2
+                    view.profileImage.clipsToBounds = true
+                }
+            }.resume()
         return view
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 
     func createRoom() {
@@ -72,10 +95,19 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
                     if (chatModel?.users[self.destinationUid!] == true) {
                         self.chatRoomUid = item.key
                         self.sendButton.isEnabled = true
-                        self.getMessageList()
+                        self.getDestinationInfo()
+                        
                     }
                 }
             }
+        }
+    }
+    
+    func getDestinationInfo() {
+        Database.database().reference().child("users").child(self.destinationUid!).observeSingleEvent(of: DataEventType.value) { (datasnapshot) in
+            self.userModel = UserModel()
+            self.userModel?.setValuesForKeys(datasnapshot.value as! [String:Any])
+            self.getMessageList()
         }
     }
     
@@ -96,4 +128,18 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func sendMessage(_ sender: UIButton) {
         createRoom()
     }
+}
+
+
+class MyMessageCell : UITableViewCell {
+    
+    @IBOutlet weak var messageText: UILabel!
+}
+
+class DestinationMessageCell : UITableViewCell {
+    
+    @IBOutlet weak var messageText: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var nameText: UILabel!
+    
 }
