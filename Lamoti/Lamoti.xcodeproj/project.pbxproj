@@ -12,6 +12,7 @@
 		821014D5255D23BD009A7346 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821014D4255D23BD009A7346 /* UserModel.swift */; };
 		822EF33C2542CBF600756B40 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 822EF33B2542CBF600756B40 /* GoogleService-Info.plist */; };
 		82634D43254AAB66006050CF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82634D42254AAB66006050CF /* LoginViewController.swift */; };
+		8271F23E256AA1EE00ECE30D /* ChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8271F23D256AA1EE00ECE30D /* ChatRoomsViewController.swift */; };
 		827229F1254035E000FFF688 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827229F0254035E000FFF688 /* AppDelegate.swift */; };
 		827229F3254035E000FFF688 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827229F2254035E000FFF688 /* SceneDelegate.swift */; };
 		827229F5254035E000FFF688 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827229F4254035E000FFF688 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 		821014D4255D23BD009A7346 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		822EF33B2542CBF600756B40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82634D42254AAB66006050CF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8271F23D256AA1EE00ECE30D /* ChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsViewController.swift; sourceTree = "<group>"; };
 		827229ED254035E000FFF688 /* Lamoti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lamoti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		827229F0254035E000FFF688 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		827229F2254035E000FFF688 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,13 +83,22 @@
 		82634D41254AAB4B006050CF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8271F23C256AA1D400ECE30D /* Tapbar */,
 				82634D42254AAB66006050CF /* LoginViewController.swift */,
 				829B6408255184EB00B4FE34 /* SignInViewController.swift */,
-				821014CD255D12A4009A7346 /* PeopleViewController.swift */,
 				821014D0255D197B009A7346 /* MainTabBarController.swift */,
 				82B94C1525612762004824DF /* ChatViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8271F23C256AA1D400ECE30D /* Tapbar */ = {
+			isa = PBXGroup;
+			children = (
+				821014CD255D12A4009A7346 /* PeopleViewController.swift */,
+				8271F23D256AA1EE00ECE30D /* ChatRoomsViewController.swift */,
+			);
+			path = Tapbar;
 			sourceTree = "<group>";
 		};
 		827229E4254035DF00FFF688 = {
@@ -252,6 +263,7 @@
 			files = (
 				82634D43254AAB66006050CF /* LoginViewController.swift in Sources */,
 				827229F5254035E000FFF688 /* ViewController.swift in Sources */,
+				8271F23E256AA1EE00ECE30D /* ChatRoomsViewController.swift in Sources */,
 				821014D5255D23BD009A7346 /* UserModel.swift in Sources */,
 				827229F1254035E000FFF688 /* AppDelegate.swift in Sources */,
 				821014D1255D197B009A7346 /* MainTabBarController.swift in Sources */,
