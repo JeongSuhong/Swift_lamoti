@@ -20,7 +20,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(PeapleViewTableCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (m) in
             m.top.equalTo(view)
@@ -57,9 +57,8 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let imageView = UIImageView()
-        cell.addSubview(imageView)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PeapleViewTableCell
+        let imageView = cell.proflieImage!
         imageView.snp.makeConstraints { (m) in
             m.centerY.equalTo(cell)
             m.left.equalTo(cell).offset(10)
@@ -74,8 +73,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }.resume()
         
-        let label = UILabel()
-        cell.addSubview(label)
+        let label = cell.nameText!
         label.snp.makeConstraints { (m) in
             m.centerY.equalTo(cell)
             m.left.equalTo(imageView.snp.right).offset(20)
@@ -94,5 +92,20 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let view = self.storyboard?.instantiateViewController(identifier: "ChatViewController") as? ChatViewController
         view?.destinationUid = self.array[indexPath.row].uid
         self.navigationController?.pushViewController(view!, animated: true)
+    }
+}
+
+class PeapleViewTableCell : UITableViewCell {
+    var proflieImage : UIImageView! = UIImageView()
+    var nameText : UILabel! = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.addSubview(proflieImage)
+        self.addSubview(nameText)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

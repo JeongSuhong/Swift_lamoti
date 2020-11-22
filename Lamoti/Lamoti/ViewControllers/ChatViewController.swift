@@ -19,6 +19,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var messageText: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sendBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,21 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
         
         uid = Auth.auth().currentUser?.uid
         checkChatRoom()
+        
+        self.tabBarController?.tabBar.isHidden = true
+        
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+     
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,7 +98,9 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
             "uid": uid!,
                 "message": messageText.text!
             ]
-            Database.database().reference().child("chatrooms").child(chatRoomUid!) .child("comments").childByAutoId().setValue(value)
+            Database.database().reference().child("chatrooms").child(chatRoomUid!) .child("comments").childByAutoId().setValue(value) { (error, reference) in
+                self.messageText.text = ""
+            }
         }
     }
     
@@ -122,7 +140,35 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
             
             self.tableView.reloadData()
             
+            if self.comments.count > 0 {
+                self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: .bottom, animated: true)
+            }
         }
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.sendBottomConstraint.constant = keyboardSize.height
+        }
+        
+        UIView.animate(withDuration: 0, animations: {
+            // setNeedsLayout() -> 다음 updateCycle & layoutIfNeeded() -> 즉시 (실행 차이가 있다.)
+            self.view.layoutIfNeeded()
+        }, completion: {
+            (complete) in
+            if self.comments.count > 0 {
+                self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: .bottom, animated: true)
+            }
+        })
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        self.sendBottomConstraint.constant = 20
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     @IBAction func sendMessage(_ sender: UIButton) {
