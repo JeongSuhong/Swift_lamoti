@@ -24,10 +24,15 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
+    
     func getChatroomsList() {
         
         Database.database().reference().child("chatrooms").queryOrdered(byChild: "users/"+uid).queryEqual(toValue: true).observeSingleEvent(of: .value) { (datasnapshot) in
             for item in datasnapshot.children.allObjects as! [DataSnapshot] {
+                self.chatrooms.removeAll()
                 if let chatroomdic = item.value as? [String:AnyObject] {
                     let chatModel = ChatModel(JSON: chatroomdic)
                     self.chatrooms.append(chatModel!)
@@ -42,10 +47,47 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeueReusableCell(withIdentifier: "RowCell", for: indexPath)
+        let cell = tableview.dequeueReusableCell(withIdentifier: "RowCell", for: indexPath) as! CustomCell
+        
+        var destinationUid : String?
+        
+        for item in chatrooms[indexPath.row].users {
+            if (item.key != self.uid) {
+                destinationUid = item.key
+            }
+        }
+        
+        Database.database().reference().child("users").child(destinationUid!).observeSingleEvent(of: .value, with: { (datasnapshot) in
+            let userModel = UserModel()
+            userModel.setValuesForKeys(datasnapshot.value as! [String:AnyObject])
+            
+            cell.titleText.text = userModel.name
+            let url = URL(string: userModel.profileImageUrl!)
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                DispatchQueue.main.sync {
+                    cell.profileImage.image = UIImage(data:data!)
+                    cell.profileImage.layer.cornerRadius = cell.profileImage.frame.width / 2
+                    cell.profileImage.layer.masksToBounds = true
+                }
+            }).resume()
+            
+            // Z ~ A 순으로 정렬 ( 큰쪽에서 작은쪽으로 )
+            let lastMessageKey = self.chatrooms[indexPath.row].comments.keys.sorted(){$0>$1}
+            cell.lastMessageText.text = self.chatrooms[indexPath.row].comments[lastMessageKey[0]]?.message
+            
+        })
         
         return cell
     }
 
 
+}
+
+class CustomCell: UITableViewCell {
+    
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var titleText: UILabel!
+    @IBOutlet weak var lastMessageText: UILabel!
+    
+    
 }

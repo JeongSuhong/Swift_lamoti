@@ -456,7 +456,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RowCell" rowHeight="100" id="e7w-A2-kXH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RowCell" rowHeight="100" id="e7w-A2-kXH" customClass="CustomCell" customModule="Lamoti" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e7w-A2-kXH" id="H97-YT-8hD">
@@ -464,26 +464,40 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b9J-iL-BfK">
-                                                    <rect key="frame" x="0.0" y="25" width="50" height="50"/>
+                                                    <rect key="frame" x="20" y="25" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="XjX-dG-g9p"/>
                                                         <constraint firstAttribute="width" secondItem="b9J-iL-BfK" secondAttribute="height" multiplier="1:1" id="yyk-y3-gS9"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4b-GC-9fu">
-                                                    <rect key="frame" x="58" y="26" width="42" height="21"/>
+                                                    <rect key="frame" x="78" y="26" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlX-XY-vgE">
+                                                    <rect key="frame" x="78" y="54" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="b9J-iL-BfK" firstAttribute="leading" secondItem="H97-YT-8hD" secondAttribute="leading" id="6Ol-mU-NYo"/>
+                                                <constraint firstItem="b9J-iL-BfK" firstAttribute="leading" secondItem="H97-YT-8hD" secondAttribute="leading" constant="20" id="6Ol-mU-NYo"/>
                                                 <constraint firstItem="v4b-GC-9fu" firstAttribute="leading" secondItem="b9J-iL-BfK" secondAttribute="trailing" constant="8" symbolic="YES" id="AOn-xy-MYi"/>
+                                                <constraint firstItem="AlX-XY-vgE" firstAttribute="top" secondItem="v4b-GC-9fu" secondAttribute="bottom" constant="7" id="YgH-TT-IvB"/>
+                                                <constraint firstItem="AlX-XY-vgE" firstAttribute="leading" secondItem="b9J-iL-BfK" secondAttribute="trailing" constant="8" symbolic="YES" id="lgO-yV-J6c"/>
                                                 <constraint firstItem="b9J-iL-BfK" firstAttribute="centerY" secondItem="H97-YT-8hD" secondAttribute="centerY" id="mUl-ZW-aAo"/>
                                                 <constraint firstItem="v4b-GC-9fu" firstAttribute="top" secondItem="H97-YT-8hD" secondAttribute="topMargin" constant="15" id="pVx-dl-r3R"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AlX-XY-vgE" secondAttribute="bottom" constant="14" id="wkc-2i-96Q"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lastMessageText" destination="AlX-XY-vgE" id="Yf2-ja-Rdl"/>
+                                            <outlet property="profileImage" destination="b9J-iL-BfK" id="S5i-f5-fD4"/>
+                                            <outlet property="titleText" destination="v4b-GC-9fu" id="UQC-lm-iH3"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
