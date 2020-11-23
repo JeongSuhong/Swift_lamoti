@@ -60,13 +60,18 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
         let view = tableView.dequeueReusableCell(withIdentifier: "MyMessageCell", for: indexPath) as! MyMessageCell
             view.messageText?.text = self.comments[indexPath.row].message
             view.messageText.numberOfLines = 0
+            
+            if let time = self.comments[indexPath.row].time {
+                view.timeText.text = time.toDayTime
+            }
+            
             return view
         } else {
             let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
             view.nameText.text = userModel?.name
             view.messageText.text = self.comments[indexPath.row].message
             view.messageText.numberOfLines = 0
-            
+        
             let url = URL(string: (self.userModel?.profileImageUrl)!)
             URLSession.shared.dataTask(with: url!) { (data, response, error) in
                 DispatchQueue.main.async {
@@ -75,6 +80,12 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
                     view.profileImage.clipsToBounds = true
                 }
             }.resume()
+            
+            if let time = self.comments[indexPath.row].time {
+                view.timeText.text = time.toDayTime
+            }
+            
+            
         return view
         }
     }
@@ -100,7 +111,8 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             let value : Dictionary<String,Any> = [
             "uid": uid!,
-                "message": messageText.text!
+                "message": messageText.text!,
+                "time": ServerValue.timestamp()
             ]
             Database.database().reference().child("chatrooms").child(chatRoomUid!) .child("comments").childByAutoId().setValue(value) { (error, reference) in
                 self.messageText.text = ""
@@ -181,9 +193,23 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
 }
 
 
+extension Int {
+    var toDayTime : String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
+        
+        let date = Date(timeIntervalSince1970: Double(self) / 1000)
+        
+        return dateFormatter.string(from: date)
+    }
+}
+
 class MyMessageCell : UITableViewCell {
     
     @IBOutlet weak var messageText: UILabel!
+    @IBOutlet weak var timeText: UILabel!
+    
 }
 
 class DestinationMessageCell : UITableViewCell {
@@ -191,5 +217,6 @@ class DestinationMessageCell : UITableViewCell {
     @IBOutlet weak var messageText: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameText: UILabel!
+    @IBOutlet weak var timeText: UILabel!
     
 }
