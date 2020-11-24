@@ -42,6 +42,7 @@
 		827229FC254035E100FFF688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		827229FE254035E100FFF688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		82937F30256D06F80001D271 /* Lamoti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lamoti.entitlements; sourceTree = "<group>"; };
 		829B6408255184EB00B4FE34 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		82B94C1525612762004824DF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		82B94C18256127F2004824DF /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
@@ -122,6 +123,7 @@
 		827229EF254035E000FFF688 /* Lamoti */ = {
 			isa = PBXGroup;
 			children = (
+				82937F30256D06F80001D271 /* Lamoti.entitlements */,
 				821014D3255D23A6009A7346 /* Model */,
 				82634D41254AAB4B006050CF /* ViewControllers */,
 				827229F0254035E000FFF688 /* AppDelegate.swift */,
@@ -419,6 +421,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lamoti/Lamoti.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XJHDNUWBP6;
 				INFOPLIST_FILE = Lamoti/Info.plist;
@@ -439,6 +442,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lamoti/Lamoti.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XJHDNUWBP6;
 				INFOPLIST_FILE = Lamoti/Info.plist;

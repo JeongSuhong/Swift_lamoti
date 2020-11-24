@@ -17,6 +17,7 @@ target 'Lamoti' do
   pod 'ObjectMapper'
   
   pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'

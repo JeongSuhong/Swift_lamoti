@@ -46,6 +46,9 @@ class LoginViewController: UIViewController {
                 let alert = UIAlertController(title: "로그인 실패", message: error.debugDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                let uid = Auth.auth().currentUser?.uid
+                let token = Messaging.messaging().token
+                Database.database().reference().child("users").child(uid!).updateChildValues(["pushToken":token])
             }
     
             

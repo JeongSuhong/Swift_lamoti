@@ -495,25 +495,34 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlX-XY-vgE">
-                                                    <rect key="frame" x="78" y="54" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="78" y="63" width="26.5" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.19355165160000001" green="0.19355165160000001" blue="0.19355165160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1999.99.99 99:99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwW-Ky-Ijr">
+                                                    <rect key="frame" x="314" y="25" width="80" height="11"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="b9J-iL-BfK" firstAttribute="leading" secondItem="H97-YT-8hD" secondAttribute="leading" constant="20" id="6Ol-mU-NYo"/>
+                                                <constraint firstItem="AlX-XY-vgE" firstAttribute="top" secondItem="v4b-GC-9fu" secondAttribute="bottom" constant="16" id="8zn-3i-7fg"/>
                                                 <constraint firstItem="v4b-GC-9fu" firstAttribute="leading" secondItem="b9J-iL-BfK" secondAttribute="trailing" constant="8" symbolic="YES" id="AOn-xy-MYi"/>
-                                                <constraint firstItem="AlX-XY-vgE" firstAttribute="top" secondItem="v4b-GC-9fu" secondAttribute="bottom" constant="7" id="YgH-TT-IvB"/>
                                                 <constraint firstItem="AlX-XY-vgE" firstAttribute="leading" secondItem="b9J-iL-BfK" secondAttribute="trailing" constant="8" symbolic="YES" id="lgO-yV-J6c"/>
                                                 <constraint firstItem="b9J-iL-BfK" firstAttribute="centerY" secondItem="H97-YT-8hD" secondAttribute="centerY" id="mUl-ZW-aAo"/>
                                                 <constraint firstItem="v4b-GC-9fu" firstAttribute="top" secondItem="H97-YT-8hD" secondAttribute="topMargin" constant="15" id="pVx-dl-r3R"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="AlX-XY-vgE" secondAttribute="bottom" constant="14" id="wkc-2i-96Q"/>
+                                                <constraint firstItem="AwW-Ky-Ijr" firstAttribute="trailing" secondItem="H97-YT-8hD" secondAttribute="trailingMargin" id="zQz-dj-GY6"/>
+                                                <constraint firstItem="AwW-Ky-Ijr" firstAttribute="top" secondItem="H97-YT-8hD" secondAttribute="topMargin" constant="14" id="zbM-tn-sLR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lastMessageText" destination="AlX-XY-vgE" id="Yf2-ja-Rdl"/>
                                             <outlet property="profileImage" destination="b9J-iL-BfK" id="S5i-f5-fD4"/>
+                                            <outlet property="timeText" destination="AwW-Ky-Ijr" id="oph-Q9-ixF"/>
                                             <outlet property="titleText" destination="v4b-GC-9fu" id="UQC-lm-iH3"/>
                                         </connections>
                                     </tableViewCell>
