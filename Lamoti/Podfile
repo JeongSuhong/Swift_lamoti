@@ -16,6 +16,8 @@ target 'Lamoti' do
   # Object <-> JSON
   pod 'ObjectMapper'
   
+  pod 'Alamofire'
+  
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
   pod 'Firebase/RemoteConfig'

@@ -25,7 +25,6 @@ class ViewController: UIViewController {
         
         remoteConfig.fetch() { [self] (status, error) -> Void in
           if status == .success {
-            print("Config fetched!")
             self.remoteConfig.activate() { (changed, error) in
               // ...
             }

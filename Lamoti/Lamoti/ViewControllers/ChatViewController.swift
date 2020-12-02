@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Alamofire
 
 class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -14,7 +15,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     var uid : String?
     var chatRoomUid : String?
     var comments : [ChatModel.Comment] = []
-    var userModel : UserModel?
+    var destinationUserModel : UserModel?
     
     @IBOutlet weak var messageText: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -68,11 +69,11 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
             return view
         } else {
             let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
-            view.nameText.text = userModel?.name
+            view.nameText.text = destinationUserModel?.name
             view.messageText.text = self.comments[indexPath.row].message
             view.messageText.numberOfLines = 0
         
-            let url = URL(string: (self.userModel?.profileImageUrl)!)
+            let url = URL(string: (self.destinationUserModel?.profileImageUrl)!)
             URLSession.shared.dataTask(with: url!) { (data, response, error) in
                 DispatchQueue.main.async {
                     view.profileImage.image = UIImage(data: data!)
@@ -139,8 +140,8 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     
     func getDestinationInfo() {
         Database.database().reference().child("users").child(self.destinationUid!).observeSingleEvent(of: DataEventType.value) { (datasnapshot) in
-            self.userModel = UserModel()
-            self.userModel?.setValuesForKeys(datasnapshot.value as! [String:Any])
+            self.destinationUserModel = UserModel()
+            self.destinationUserModel?.setValuesForKeys(datasnapshot.value as! [String:Any])
             self.getMessageList()
         }
     }
@@ -160,6 +161,10 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
                 self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: .bottom, animated: true)
             }
         }
+    }
+    
+    func sendGcm() {
+        
     }
     
     @objc func keyboardWillShow(notification: Notification) {

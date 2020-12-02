@@ -21,6 +21,7 @@
 		827229FD254035E100FFF688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827229FB254035E100FFF688 /* LaunchScreen.storyboard */; };
 		8278B9CE25483B54004BD0A5 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */; };
 		829B6409255184EB00B4FE34 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B6408255184EB00B4FE34 /* SignInViewController.swift */; };
+		82AAA04C2577C2BE005CBE80 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AAA04B2577C2BE005CBE80 /* NotificationModel.swift */; };
 		82B94C1625612762004824DF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B94C1525612762004824DF /* ChatViewController.swift */; };
 		82B94C19256127F2004824DF /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B94C18256127F2004824DF /* ChatModel.swift */; };
 		DF6534CFACBA019E644CAAA8 /* Pods_Lamoti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4540D17EFED53C76EC1C236 /* Pods_Lamoti.framework */; };
@@ -44,6 +45,7 @@
 		8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		82937F30256D06F80001D271 /* Lamoti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lamoti.entitlements; sourceTree = "<group>"; };
 		829B6408255184EB00B4FE34 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		82AAA04B2577C2BE005CBE80 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		82B94C1525612762004824DF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		82B94C18256127F2004824DF /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		9DF049DE4EE1858A73357112 /* Pods-Lamoti.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lamoti.debug.xcconfig"; path = "Target Support Files/Pods-Lamoti/Pods-Lamoti.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				821014D4255D23BD009A7346 /* UserModel.swift */,
 				82B94C18256127F2004824DF /* ChatModel.swift */,
+				82AAA04B2577C2BE005CBE80 /* NotificationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				821014D5255D23BD009A7346 /* UserModel.swift in Sources */,
 				827229F1254035E000FFF688 /* AppDelegate.swift in Sources */,
 				821014D1255D197B009A7346 /* MainTabBarController.swift in Sources */,
+				82AAA04C2577C2BE005CBE80 /* NotificationModel.swift in Sources */,
 				82B94C19256127F2004824DF /* ChatModel.swift in Sources */,
 				821014CE255D12A4009A7346 /* PeopleViewController.swift in Sources */,
 				829B6409255184EB00B4FE34 /* SignInViewController.swift in Sources */,
