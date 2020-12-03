@@ -16,6 +16,7 @@ target 'Lamoti' do
   # Object <-> JSON
   pod 'ObjectMapper'
   
+  # HTTP Networking ( base URLSession )
   pod 'Alamofire'
   
   pod 'Firebase/Analytics'

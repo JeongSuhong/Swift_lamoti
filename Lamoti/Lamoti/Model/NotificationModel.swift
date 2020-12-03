@@ -28,7 +28,7 @@ class NotificationModel: Mappable {
     class Notification: Mappable {
         
         public var title : String?
-        public var text : String?
+        public var body : String?
         
         init() {
             
@@ -40,7 +40,7 @@ class NotificationModel: Mappable {
         
         func mapping(map: Map) {
             title <- map["title"]
-            text <- map["text"]
+            body <- map["body"]
         }
     }
 }

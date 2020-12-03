@@ -35,6 +35,12 @@ class LoginViewController: UIViewController {
                 let view = self.storyboard?.instantiateViewController(identifier: "MainTabBarController") as! MainTabBarController
                 view.modalPresentationStyle = .fullScreen
                 self.present(view, animated: true, completion: nil)
+                
+                let uid = Auth.auth().currentUser?.uid
+                Messaging.messaging().token { (token, error) in
+                    let data = NSDictionary(dictionary: ["pushToken":token])
+                    Database.database().reference().child("users").child(uid!).updateChildValues(data as! [AnyHashable : Any])
+                }
             }
         }
         

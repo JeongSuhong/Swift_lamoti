@@ -116,6 +116,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
                 "time": ServerValue.timestamp()
             ]
             Database.database().reference().child("chatrooms").child(chatRoomUid!) .child("comments").childByAutoId().setValue(value) { (error, reference) in
+                self.sendGcm()
                 self.messageText.text = ""
             }
         }
@@ -143,6 +144,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
             self.destinationUserModel = UserModel()
             self.destinationUserModel?.setValuesForKeys(datasnapshot.value as! [String:Any])
             self.getMessageList()
+            
         }
     }
     
@@ -165,6 +167,22 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     
     func sendGcm() {
         
+        let url = "https://fcm.googleapis.com/fcm/send"
+        let header : HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "Authorization" : "key=AAAAUb9MMeg:APA91bHlc3fjdTanmvnLwQf7vLDGkaa5NJn2Q_VX-v6O7Cy95GpjC4xP8-IoD6w_hFEAKITh_FH7S0ak6dzfvmLVaLFomiY4i7n32ym-FwLzsQaZJU7EB6MXjZjxDPBdSOskUeLF7OBl"
+        ]
+        
+        var notificationModel = NotificationModel()
+        notificationModel.to = destinationUserModel?.pushToken
+        notificationModel.notification.title = "보낸이 아이디"
+        notificationModel.notification.body = messageText.text
+        
+        let params = notificationModel.toJSON()
+        
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON { (response) in
+            print(response.result)
+        }
     }
     
     @objc func keyboardWillShow(notification: Notification) {
