@@ -173,10 +173,14 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
             "Authorization" : "key=AAAAUb9MMeg:APA91bHlc3fjdTanmvnLwQf7vLDGkaa5NJn2Q_VX-v6O7Cy95GpjC4xP8-IoD6w_hFEAKITh_FH7S0ak6dzfvmLVaLFomiY4i7n32ym-FwLzsQaZJU7EB6MXjZjxDPBdSOskUeLF7OBl"
         ]
         
+        let user = Auth.auth().currentUser
+        
         var notificationModel = NotificationModel()
         notificationModel.to = destinationUserModel?.pushToken
-        notificationModel.notification.title = "보낸이 아이디"
+        notificationModel.notification.title = user?.displayName
         notificationModel.notification.body = messageText.text
+        notificationModel.data.title = user?.displayName
+        notificationModel.data.body = messageText.text
         
         let params = notificationModel.toJSON()
         

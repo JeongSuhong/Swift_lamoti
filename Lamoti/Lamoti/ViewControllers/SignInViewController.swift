@@ -55,7 +55,17 @@ class SignInViewController: UIViewController, UINavigationControllerDelegate, UI
             let userId = result?.user.uid
 
             let image = self.profileImage.image!.jpegData(compressionQuality: 0.1)
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = self.nameText.text
+            changeRequest?.commitChanges(completion: { (error) in
+                if error != nil {
+                    print("Erorr Update DisplayName : \(error)")
+                }
+            })
+            
             let riversRef = Storage.storage().reference().child("userImage/\(userId!).jpg")
+            
+            
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             let uploadTask = riversRef.putData(image!, metadata: metadata) { (metadata, error) in
