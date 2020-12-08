@@ -17,6 +17,8 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     var chatRoomUid : String?
     var comments : [ChatModel.Comment] = []
     var destinationUserModel : UserModel?
+    var databaseRef : DatabaseReference?
+    var observe : UInt?
     
     @IBOutlet weak var messageText: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -49,7 +51,10 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        NotificationCenter.default.removeObserver(self)
         self.tabBarController?.tabBar.isHidden = false
+        
+        databaseRef?.removeObserver(withHandle: observe!)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -146,19 +151,31 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getMessageList() {
-        Database.database().reference().child("chatrooms").child(self.chatRoomUid!).child("comments").observe(DataEventType.value) { (datasnapshot) in
+        databaseRef = Database.database().reference().child("chatrooms").child(self.chatRoomUid!).child("comments")
+        observe = databaseRef?.observe(DataEventType.value) { (datasnapshot) in
             self.comments.removeAll()
             
+            var readUserDic : Dictionary<String, AnyObject> = [:]
+            
             for item in datasnapshot.children.allObjects as! [DataSnapshot] {
+                let key = item.key as String
                 let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                comment?.readUsers[self.uid!] = true
+                readUserDic[key] = comment?.toJSON() as! NSDictionary
+                
                 self.comments.append(comment!)
             }
+            
+            let nsDic = readUserDic as NSDictionary
+            
+            datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable:Any], withCompletionBlock: { (error, ref) in
             
             self.tableView.reloadData()
             
             if self.comments.count > 0 {
                 self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: .bottom, animated: true)
             }
+            })
         }
     }
     

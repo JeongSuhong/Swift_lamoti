@@ -80,13 +80,27 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let commentLabel = cell.commentText!
         commentLabel.snp.makeConstraints { (m) in
-            m.right.equalTo(cell)
-            m.centerY.equalTo(cell)
+            m.centerX.equalTo(cell.commentBGView)
+            m.centerY.equalTo(cell.commentBGView)
         }
         
         if let comment = array[indexPath.row].comment {
             commentLabel.text = comment
         }
+        
+        cell.commentBGView.snp.makeConstraints { (m) in
+            m.right.equalTo(cell).offset(-10)
+            m.centerY.equalTo(cell)
+            
+            if let count = commentLabel.text?.count {
+                m.width.equalTo(count * 10)
+            } else {
+                m.width.equalTo(0)
+            }
+            m.height.equalTo(30)
+        }
+        
+        cell.commentBGView.backgroundColor = UIColor.gray
         
         return cell
     }
@@ -106,11 +120,13 @@ class PeapleViewTableCell : UITableViewCell {
     var proflieImage : UIImageView! = UIImageView()
     var nameText : UILabel! = UILabel()
     var commentText : UILabel! = UILabel()
+    var commentBGView : UIView = UIView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(proflieImage)
         self.addSubview(nameText)
+        self.addSubview(commentBGView)
         self.addSubview(commentText)
     }
     
