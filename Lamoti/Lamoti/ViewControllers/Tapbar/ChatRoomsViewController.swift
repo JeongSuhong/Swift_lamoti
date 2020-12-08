@@ -66,13 +66,9 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
             
             cell.titleText.text = userModel.name
             let url = URL(string: userModel.profileImageUrl!)
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                DispatchQueue.main.sync {
-                    cell.profileImage.image = UIImage(data:data!)
-                    cell.profileImage.layer.cornerRadius = cell.profileImage.frame.width / 2
-                    cell.profileImage.layer.masksToBounds = true
-                }
-            }).resume()
+            cell.profileImage.layer.cornerRadius = cell.profileImage.frame.width / 2
+            cell.profileImage.layer.masksToBounds = true
+            cell.profileImage.kf.setImage(with: url)
             
             // Z ~ A 순으로 정렬 ( 큰쪽에서 작은쪽으로 )
             let lastMessageKey = self.chatrooms[indexPath.row].comments.keys.sorted(){$0>$1}

@@ -65,14 +65,11 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             m.height.width.equalTo(50)
         }
         
-        URLSession.shared.dataTask(with: URL(string: array[indexPath.row].profileImageUrl!)!) { (data, response, error) in
-            DispatchQueue.main.async {
-                imageView.image = UIImage(data: data!)
-                imageView.layer.cornerRadius = imageView.frame.size.width / 2
-                imageView.clipsToBounds = true
-            }
-        }.resume()
-        
+        let url = URL(string: array[indexPath.row].profileImageUrl!)
+        imageView.layer.cornerRadius = 50 / 2
+        imageView.clipsToBounds = true
+        imageView.kf.setImage(with: url)
+
         let label = cell.nameText!
         label.snp.makeConstraints { (m) in
             m.centerY.equalTo(cell)
@@ -80,6 +77,16 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         label.text = array[indexPath.row].name
+        
+        let commentLabel = cell.commentText!
+        commentLabel.snp.makeConstraints { (m) in
+            m.right.equalTo(cell)
+            m.centerY.equalTo(cell)
+        }
+        
+        if let comment = array[indexPath.row].comment {
+            commentLabel.text = comment
+        }
         
         return cell
     }
@@ -98,11 +105,13 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
 class PeapleViewTableCell : UITableViewCell {
     var proflieImage : UIImageView! = UIImageView()
     var nameText : UILabel! = UILabel()
+    var commentText : UILabel! = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(proflieImage)
         self.addSubview(nameText)
+        self.addSubview(commentText)
     }
     
     required init?(coder: NSCoder) {
