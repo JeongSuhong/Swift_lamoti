@@ -19,6 +19,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
     var destinationUserModel : UserModel?
     var databaseRef : DatabaseReference?
     var observe : UInt?
+    var peopleCount : Int?
     
     @IBOutlet weak var messageText: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -88,6 +89,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
                 view.timeText.text = time.toDayTime
             }
             
+            setReadCount(label: view.readCountText, position: indexPath.row)
             
         return view
         }
@@ -160,6 +162,8 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
             for item in datasnapshot.children.allObjects as! [DataSnapshot] {
                 let key = item.key as String
                 let comment = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                let commentMotify = ChatModel.Comment(JSON: item.value as! [String:AnyObject])
+                commentMotify?.readUsers[self.uid!] = true
                 comment?.readUsers[self.uid!] = true
                 readUserDic[key] = comment?.toJSON() as! NSDictionary
                 
@@ -168,6 +172,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
             
             let nsDic = readUserDic as NSDictionary
             
+            if ((self.comments.last?.readUsers.keys.contains(self.uid!)) != nil) {
             datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable:Any], withCompletionBlock: { (error, ref) in
             
             self.tableView.reloadData()
@@ -176,6 +181,14 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
                 self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: .bottom, animated: true)
             }
             })
+        } else
+            {
+                self.tableView.reloadData()
+                
+                if self.comments.count > 0 {
+                    self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: .bottom, animated: true)
+                }
+            }
         }
     }
     
@@ -202,6 +215,36 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
             print(response.result)
         }
     }
+    
+    func setReadCount(label: UILabel?, position: Int?) {
+        let readCount = self.comments[position!].readUsers.count
+        
+        if (peopleCount == nil) {
+        
+        Database.database().reference().child("chatrooms").child(chatRoomUid!).child("users").observeSingleEvent(of: .value) { (datasnapshot) in
+            let dic = datasnapshot.value as! [String:Any]
+            self.peopleCount = dic.count
+            let noReadCount = self.peopleCount! - readCount
+            
+            if (noReadCount > 0) {
+                label?.isHidden = false
+                label?.text = String(noReadCount)
+            } else {
+                label?.isHidden = true
+            }
+        }
+        } else {
+            let noReadCount = peopleCount! - readCount
+            
+            if (noReadCount > 0) {
+                label?.isHidden = false
+                label?.text = String(noReadCount)
+            } else {
+                label?.isHidden = true
+            }
+        }
+    }
+    
     
     @objc func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -250,7 +293,7 @@ class MyMessageCell : UITableViewCell {
     
     @IBOutlet weak var messageText: UILabel!
     @IBOutlet weak var timeText: UILabel!
-    
+    @IBOutlet weak var readCountText: UILabel!
 }
 
 class DestinationMessageCell : UITableViewCell {
@@ -259,5 +302,6 @@ class DestinationMessageCell : UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameText: UILabel!
     @IBOutlet weak var timeText: UILabel!
+    @IBOutlet weak var readCountText: UILabel!
     
 }

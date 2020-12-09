@@ -321,6 +321,12 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKX-n4-1Ds">
+                                                    <rect key="frame" x="311" y="45.5" width="6" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" systemColor="systemOrangeColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="IcV-jZ-FeU" secondAttribute="bottom" id="9Y7-zX-HXB"/>
@@ -331,12 +337,15 @@
                                                 <constraint firstItem="b8n-Yu-8OY" firstAttribute="trailing" secondItem="IcV-jZ-FeU" secondAttribute="trailing" constant="10" id="Sla-TE-jNu"/>
                                                 <constraint firstItem="b8n-Yu-8OY" firstAttribute="top" secondItem="IcV-jZ-FeU" secondAttribute="top" id="W2v-Rs-1b6"/>
                                                 <constraint firstItem="Pa9-66-ubX" firstAttribute="trailing" secondItem="b8n-Yu-8OY" secondAttribute="trailing" id="fH5-zc-Fmg"/>
+                                                <constraint firstItem="Pa9-66-ubX" firstAttribute="leading" secondItem="TKX-n4-1Ds" secondAttribute="trailing" constant="6" id="kv6-cM-61d"/>
                                                 <constraint firstItem="Pa9-66-ubX" firstAttribute="bottom" secondItem="b8n-Yu-8OY" secondAttribute="bottom" id="pNH-C4-wT3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TKX-n4-1Ds" secondAttribute="bottom" id="vQu-I1-3Gz"/>
                                                 <constraint firstItem="b8n-Yu-8OY" firstAttribute="bottom" secondItem="IcV-jZ-FeU" secondAttribute="bottom" id="w3h-yM-fRs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageText" destination="IcV-jZ-FeU" id="yyp-lU-g4f"/>
+                                            <outlet property="readCountText" destination="TKX-n4-1Ds" id="zVo-P4-ieT"/>
                                             <outlet property="timeText" destination="Pa9-66-ubX" id="ycQ-nG-Rj7"/>
                                         </connections>
                                     </tableViewCell>
@@ -375,8 +384,15 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDl-bV-tMp">
+                                                    <rect key="frame" x="147" y="46" width="6" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" systemColor="systemOrangeColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="sDl-bV-tMp" firstAttribute="leading" secondItem="X4S-48-T1k" secondAttribute="trailing" constant="6" id="18Y-Jb-iJT"/>
                                                 <constraint firstItem="2Pq-5A-FPh" firstAttribute="top" secondItem="lQx-Vi-t7W" secondAttribute="topMargin" constant="5" id="2Bk-M5-Nbw"/>
                                                 <constraint firstItem="X4S-48-T1k" firstAttribute="leading" secondItem="iUt-XU-HqR" secondAttribute="leading" id="5FT-Z2-4w8"/>
                                                 <constraint firstItem="Npx-gO-Ue3" firstAttribute="top" secondItem="lQx-Vi-t7W" secondAttribute="topMargin" id="8IR-E8-qJh"/>
@@ -385,6 +401,7 @@
                                                 <constraint firstItem="gQ0-h8-RMe" firstAttribute="leading" secondItem="lQx-Vi-t7W" secondAttribute="leadingMargin" id="Bzx-L4-yvI"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Npx-gO-Ue3" secondAttribute="bottom" id="DwC-wy-W8S"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Npx-gO-Ue3" secondAttribute="trailing" constant="65" id="EIP-AT-7vI"/>
+                                                <constraint firstAttribute="bottom" secondItem="sDl-bV-tMp" secondAttribute="bottom" constant="10.5" id="GbB-qW-MBV"/>
                                                 <constraint firstItem="iUt-XU-HqR" firstAttribute="top" secondItem="Npx-gO-Ue3" secondAttribute="top" id="MT1-PN-aAV"/>
                                                 <constraint firstItem="gQ0-h8-RMe" firstAttribute="top" secondItem="2Pq-5A-FPh" secondAttribute="bottom" constant="5" id="TeQ-Gc-dqW"/>
                                                 <constraint firstItem="2Pq-5A-FPh" firstAttribute="leading" secondItem="lQx-Vi-t7W" secondAttribute="leadingMargin" id="VWl-zQ-b6L"/>
@@ -397,6 +414,7 @@
                                             <outlet property="messageText" destination="Npx-gO-Ue3" id="44d-jH-8Nk"/>
                                             <outlet property="nameText" destination="gQ0-h8-RMe" id="1Fo-S4-bjU"/>
                                             <outlet property="profileImage" destination="2Pq-5A-FPh" id="FLB-fC-oo7"/>
+                                            <outlet property="readCountText" destination="sDl-bV-tMp" id="9ug-82-0fM"/>
                                             <outlet property="timeText" destination="X4S-48-T1k" id="PyE-xy-HfT"/>
                                         </connections>
                                     </tableViewCell>
@@ -630,6 +648,9 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

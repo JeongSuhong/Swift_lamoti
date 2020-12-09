@@ -26,7 +26,13 @@ class LoginViewController: UIViewController {
         self.view.addSubview(statusBar)
         statusBar.snp.makeConstraints { (m) in
             m.top.left.right.equalTo(self.view)
-            m.height.equalTo(20)
+            
+            // 아이폰X일경우 but 다른 비교값 찾아보기
+            if (UIScreen.main.nativeBounds.height == 2436) {
+                m.height.equalTo(40)
+            } else {
+                m.height.equalTo(20)
+            }
         }
         statusBar.backgroundColor = UIColor.gray
         
