@@ -70,6 +70,10 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.profileImage.layer.masksToBounds = true
             cell.profileImage.kf.setImage(with: url)
             
+            if(self.chatrooms[indexPath.row].comments.keys.count == 0) {
+                return
+            }
+            
             // Z ~ A 순으로 정렬 ( 큰쪽에서 작은쪽으로 )
             let lastMessageKey = self.chatrooms[indexPath.row].comments.keys.sorted(){$0>$1}
             cell.lastMessageText.text = self.chatrooms[indexPath.row].comments[lastMessageKey[0]]?.message
@@ -84,10 +88,18 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if(self.destinationUsers[indexPath.row].count > 2) {
+            let destinationUid = self.destinationUsers[indexPath.row]
+            let view = self.storyboard?.instantiateViewController(identifier: "GroupChatRoomViewController") as! GroupChatRoomViewController
+            
+            self.navigationController?.pushViewController(view, animated: true)
+        } else {
+        
         let destinationUid = self.destinationUsers[indexPath.row]
         let view = self.storyboard?.instantiateViewController(identifier: "ChatViewController") as! ChatViewController
         view.destinationUid = destinationUid
         self.navigationController?.pushViewController(view, animated: true)
+        }
     }
 }
 
