@@ -73,6 +73,8 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
                 view.timeText.text = time.toDayTime
             }
             
+            setReadCount(label: view.readCountText, position: indexPath.row)
+             
             return view
         } else {
             let view = tableView.dequeueReusableCell(withIdentifier: "DestinationMessageCell", for: indexPath) as! DestinationMessageCell
@@ -93,6 +95,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
             
         return view
         }
+    
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -132,7 +135,8 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
                 
                 if let chatRoomdic = item.value as? [String:AnyObject] {
                     let chatModel = ChatModel(JSON: chatRoomdic)
-                    if (chatModel?.users[self.destinationUid!] == true) {
+                    
+                    if (chatModel?.users[self.destinationUid!] == true && chatModel?.users.count == 2) {
                         self.chatRoomUid = item.key
                         self.sendButton.isEnabled = true
                         self.getDestinationInfo()
@@ -206,7 +210,7 @@ class ChatViewController : UIViewController, UITableViewDelegate, UITableViewDat
         
         let user = Auth.auth().currentUser
         
-        var notificationModel = NotificationModel()
+         var notificationModel = NotificationModel()
         notificationModel.to = destinationUserModel?.pushToken
         notificationModel.notification.title = user?.displayName
         notificationModel.notification.body = messageText.text
