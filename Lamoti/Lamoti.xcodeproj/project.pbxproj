@@ -22,6 +22,9 @@
 		827229FA254035E100FFF688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 827229F9254035E100FFF688 /* Assets.xcassets */; };
 		827229FD254035E100FFF688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827229FB254035E100FFF688 /* LaunchScreen.storyboard */; };
 		8278B9CE25483B54004BD0A5 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */; };
+		829860CA2591D9EA00227AE9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829860C92591D9EA00227AE9 /* LoginViewModel.swift */; };
+		829860CD2591D9F400227AE9 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829860CC2591D9F400227AE9 /* LoginModel.swift */; };
+		829860E32591E57900227AE9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829860E22591E57900227AE9 /* UserManager.swift */; };
 		829B6409255184EB00B4FE34 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B6408255184EB00B4FE34 /* SignInViewController.swift */; };
 		82AAA04C2577C2BE005CBE80 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AAA04B2577C2BE005CBE80 /* NotificationModel.swift */; };
 		82AC973A257F214F0033E41E /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC9739257F214F0033E41E /* AccountViewController.swift */; };
@@ -35,7 +38,6 @@
 		821014D0255D197B009A7346 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		821014D4255D23BD009A7346 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		822EF33B2542CBF600756B40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		824FEC232581C95700CA74E2 /* BEMCheckBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BEMCheckBox.h; sourceTree = "<group>"; };
 		824FEC252581CCF300CA74E2 /* SelectFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFriendViewController.swift; sourceTree = "<group>"; };
 		824FEC282582176400CA74E2 /* GroupChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatRoomViewController.swift; sourceTree = "<group>"; };
 		82634D42254AAB66006050CF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +52,9 @@
 		827229FE254035E100FFF688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		82937F30256D06F80001D271 /* Lamoti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lamoti.entitlements; sourceTree = "<group>"; };
+		829860C92591D9EA00227AE9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		829860CC2591D9F400227AE9 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		829860E22591E57900227AE9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		829B6408255184EB00B4FE34 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		82AAA04B2577C2BE005CBE80 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		82AC9739257F214F0033E41E /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +86,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8207E9DE2590C00000EA0CD9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		821014D3255D23A6009A7346 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +106,8 @@
 		82634D41254AAB4B006050CF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				827229F4254035E000FFF688 /* ViewController.swift */,
 				8271F23C256AA1D400ECE30D /* Tapbar */,
-				82634D42254AAB66006050CF /* LoginViewController.swift */,
 				829B6408255184EB00B4FE34 /* SignInViewController.swift */,
 				821014D0255D197B009A7346 /* MainTabBarController.swift */,
 				82B94C1525612762004824DF /* ChatViewController.swift */,
@@ -136,21 +148,64 @@
 		827229EF254035E000FFF688 /* Lamoti */ = {
 			isa = PBXGroup;
 			children = (
-				82937F30256D06F80001D271 /* Lamoti.entitlements */,
+				829860E12591E56700227AE9 /* Manager */,
+				829860C52591D9B500227AE9 /* Login */,
+				8207E9DE2590C00000EA0CD9 /* UI */,
 				821014D3255D23A6009A7346 /* Model */,
 				82634D41254AAB4B006050CF /* ViewControllers */,
 				827229F0254035E000FFF688 /* AppDelegate.swift */,
 				827229F2254035E000FFF688 /* SceneDelegate.swift */,
-				827229F4254035E000FFF688 /* ViewController.swift */,
+				82937F30256D06F80001D271 /* Lamoti.entitlements */,
 				827229F6254035E000FFF688 /* Main.storyboard */,
 				827229F9254035E100FFF688 /* Assets.xcassets */,
 				827229FB254035E100FFF688 /* LaunchScreen.storyboard */,
 				827229FE254035E100FFF688 /* Info.plist */,
 				822EF33B2542CBF600756B40 /* GoogleService-Info.plist */,
 				8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */,
-				824FEC232581C95700CA74E2 /* BEMCheckBox.h */,
 			);
 			path = Lamoti;
+			sourceTree = "<group>";
+		};
+		829860C52591D9B500227AE9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				829860C82591D9CD00227AE9 /* ViewController */,
+				829860C72591D9C800227AE9 /* ViewModel */,
+				829860C62591D9C400227AE9 /* Model */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		829860C62591D9C400227AE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				829860CC2591D9F400227AE9 /* LoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		829860C72591D9C800227AE9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				829860C92591D9EA00227AE9 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		829860C82591D9CD00227AE9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				82634D42254AAB66006050CF /* LoginViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		829860E12591E56700227AE9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				829860E22591E57900227AE9 /* UserManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		D38358027DD2461C05A12AB4 /* Frameworks */ = {
@@ -277,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				829860E32591E57900227AE9 /* UserManager.swift in Sources */,
 				82634D43254AAB66006050CF /* LoginViewController.swift in Sources */,
 				827229F5254035E000FFF688 /* ViewController.swift in Sources */,
 				82AC973A257F214F0033E41E /* AccountViewController.swift in Sources */,
@@ -285,12 +341,14 @@
 				821014D5255D23BD009A7346 /* UserModel.swift in Sources */,
 				827229F1254035E000FFF688 /* AppDelegate.swift in Sources */,
 				821014D1255D197B009A7346 /* MainTabBarController.swift in Sources */,
+				829860CD2591D9F400227AE9 /* LoginModel.swift in Sources */,
 				82AAA04C2577C2BE005CBE80 /* NotificationModel.swift in Sources */,
 				82B94C19256127F2004824DF /* ChatModel.swift in Sources */,
 				821014CE255D12A4009A7346 /* PeopleViewController.swift in Sources */,
 				829B6409255184EB00B4FE34 /* SignInViewController.swift in Sources */,
 				82B94C1625612762004824DF /* ChatViewController.swift in Sources */,
 				824FEC262581CCF300CA74E2 /* SelectFriendViewController.swift in Sources */,
+				829860CA2591D9EA00227AE9 /* LoginViewModel.swift in Sources */,
 				827229F3254035E000FFF688 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

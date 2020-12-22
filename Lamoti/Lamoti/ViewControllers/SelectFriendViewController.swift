@@ -7,9 +7,8 @@
 
 import UIKit
 import Firebase
-import BEMCheckBox
 
-class SelectFriendViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BEMCheckBoxDelegate {
+class SelectFriendViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var array : [UserModel] = []
     var users = Dictionary<String,Bool>()
@@ -55,20 +54,20 @@ class SelectFriendViewController: UIViewController, UITableViewDataSource, UITab
         var view = tableView.dequeueReusableCell(withIdentifier: "SelectFriendCell", for: indexPath) as! SelectFriendCell
         view.nameText.text = array[indexPath.row].name
         view.profileImage.kf.setImage(with: URL(string: array[indexPath.row].profileImageUrl!))
-        view.checkbox.tag = indexPath.row
-        view.checkbox.delegate = self
+//        view.checkbox.tag = indexPath.row
+//        view.checkbox.delegate = self
         
         return view
     }
     
-    func didTap(_ checkbox: BEMCheckBox) {
-       if (checkbox.on) {
-           users[self.array[checkbox.tag].uid!] = true
-       } else {
-           users.removeValue(forKey: self.array[checkbox.tag].uid!)
-           
-       }
-   }
+//    func didTap(_ checkbox: BEMCheckBox) {
+//       if (checkbox.on) {
+//           users[self.array[checkbox.tag].uid!] = true
+//       } else {
+//           users.removeValue(forKey: self.array[checkbox.tag].uid!)
+//
+//       }
+//   }
     
      
     
@@ -84,7 +83,6 @@ class SelectFriendViewController: UIViewController, UITableViewDataSource, UITab
 
 class SelectFriendCell : UITableViewCell {
     
-    @IBOutlet weak var checkbox: BEMCheckBox!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameText: UILabel!
 }

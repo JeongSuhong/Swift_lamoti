@@ -21,20 +21,7 @@ class LoginViewController: UIViewController {
 
         // 에러 핸들링. try! -> Error 가 절대로 발생하지 않을경우 사용
         try! Auth.auth().signOut()
-        
-        let statusBar = UIView()
-        self.view.addSubview(statusBar)
-        statusBar.snp.makeConstraints { (m) in
-            m.top.left.right.equalTo(self.view)
-            
-            // 아이폰X일경우 but 다른 비교값 찾아보기
-            if (UIScreen.main.nativeBounds.height == 2436) {
-                m.height.equalTo(40)
-            } else {
-                m.height.equalTo(20)
-            }
-        }
-        statusBar.backgroundColor = UIColor.gray
+
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if(user != nil) {
