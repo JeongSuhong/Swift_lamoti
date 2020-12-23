@@ -169,7 +169,7 @@
 		829860C52591D9B500227AE9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				829860C82591D9CD00227AE9 /* ViewController */,
+				829860C82591D9CD00227AE9 /* View */,
 				829860C72591D9C800227AE9 /* ViewModel */,
 				829860C62591D9C400227AE9 /* Model */,
 			);
@@ -192,12 +192,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		829860C82591D9CD00227AE9 /* ViewController */ = {
+		829860C82591D9CD00227AE9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				82634D42254AAB66006050CF /* LoginViewController.swift */,
 			);
-			path = ViewController;
+			path = View;
 			sourceTree = "<group>";
 		};
 		829860E12591E56700227AE9 /* Manager */ = {
@@ -507,7 +507,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lamoti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Lamoti/BEMCheckBox.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -529,7 +528,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Lamoti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = Lamoti/BEMCheckBox.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
