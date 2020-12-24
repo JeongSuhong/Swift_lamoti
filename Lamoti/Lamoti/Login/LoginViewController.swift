@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var viewPasswordButton: UIButton!
     
     private var vm : LoginViewModel?
 
@@ -40,8 +41,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func presentSignIn(_ sender: UIButton) {
-        let view = self.storyboard?.instantiateViewController(identifier: "SignInViewController") as! SignInViewController
-        self.navigationController?.pushViewController(view, animated: true)
+        let view = self.storyboard?.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+        view.modalPresentationStyle = .overFullScreen
+        self.present(view, animated: true)
     }
 }
 
