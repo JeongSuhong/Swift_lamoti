@@ -22,9 +22,9 @@
 		827229FA254035E100FFF688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 827229F9254035E100FFF688 /* Assets.xcassets */; };
 		827229FD254035E100FFF688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 827229FB254035E100FFF688 /* LaunchScreen.storyboard */; };
 		8278B9CE25483B54004BD0A5 /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */; };
+		828DF45B2599E8A8001139DC /* NetworkVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828DF45A2599E8A8001139DC /* NetworkVO.swift */; };
 		82932FEC2594A13B00F63A97 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82932FEB2594A13B00F63A97 /* SignUpViewModel.swift */; };
 		829860CA2591D9EA00227AE9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829860C92591D9EA00227AE9 /* LoginViewModel.swift */; };
-		829860CD2591D9F400227AE9 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829860CC2591D9F400227AE9 /* LoginModel.swift */; };
 		829860E32591E57900227AE9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829860E22591E57900227AE9 /* UserManager.swift */; };
 		829B6409255184EB00B4FE34 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829B6408255184EB00B4FE34 /* SignUpViewController.swift */; };
 		82AAA04C2577C2BE005CBE80 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AAA04B2577C2BE005CBE80 /* NotificationModel.swift */; };
@@ -52,10 +52,10 @@
 		827229FC254035E100FFF688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		827229FE254035E100FFF688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8278B9CD25483B54004BD0A5 /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		828DF45A2599E8A8001139DC /* NetworkVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkVO.swift; sourceTree = "<group>"; };
 		82932FEB2594A13B00F63A97 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		82937F30256D06F80001D271 /* Lamoti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lamoti.entitlements; sourceTree = "<group>"; };
 		829860C92591D9EA00227AE9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		829860CC2591D9F400227AE9 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		829860E22591E57900227AE9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		829B6408255184EB00B4FE34 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		82AAA04B2577C2BE005CBE80 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
@@ -149,8 +149,8 @@
 		827229EF254035E000FFF688 /* Lamoti */ = {
 			isa = PBXGroup;
 			children = (
+				828DF4552599E598001139DC /* Network */,
 				82932FE7259494E400F63A97 /* SignUp */,
-				829860E12591E56700227AE9 /* Manager */,
 				829860C52591D9B500227AE9 /* Login */,
 				8207E9DE2590C00000EA0CD9 /* UI */,
 				821014D3255D23A6009A7346 /* Model */,
@@ -168,6 +168,15 @@
 			path = Lamoti;
 			sourceTree = "<group>";
 		};
+		828DF4552599E598001139DC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				829860E22591E57900227AE9 /* UserManager.swift */,
+				828DF45A2599E8A8001139DC /* NetworkVO.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		82932FE7259494E400F63A97 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,17 +191,8 @@
 			children = (
 				82634D42254AAB66006050CF /* LoginViewController.swift */,
 				829860C92591D9EA00227AE9 /* LoginViewModel.swift */,
-				829860CC2591D9F400227AE9 /* LoginModel.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		829860E12591E56700227AE9 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				829860E22591E57900227AE9 /* UserManager.swift */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		D38358027DD2461C05A12AB4 /* Frameworks */ = {
@@ -327,9 +327,9 @@
 				82932FEC2594A13B00F63A97 /* SignUpViewModel.swift in Sources */,
 				8271F23E256AA1EE00ECE30D /* ChatRoomsViewController.swift in Sources */,
 				821014D5255D23BD009A7346 /* UserModel.swift in Sources */,
+				828DF45B2599E8A8001139DC /* NetworkVO.swift in Sources */,
 				827229F1254035E000FFF688 /* AppDelegate.swift in Sources */,
 				821014D1255D197B009A7346 /* MainTabBarController.swift in Sources */,
-				829860CD2591D9F400227AE9 /* LoginModel.swift in Sources */,
 				82AAA04C2577C2BE005CBE80 /* NotificationModel.swift in Sources */,
 				82B94C19256127F2004824DF /* ChatModel.swift in Sources */,
 				821014CE255D12A4009A7346 /* PeopleViewController.swift in Sources */,
